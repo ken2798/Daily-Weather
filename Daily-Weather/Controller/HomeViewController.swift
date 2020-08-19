@@ -48,7 +48,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     func requestWeatherForLocation(){
@@ -63,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("something is wrong")
                 return
             }
-            //Covert data to models/some object
+//            Covert data to models/some object
             var json: DataWeather?
             do {
                 json = try JSONDecoder().decode(DataWeather.self, from: data)
@@ -74,8 +73,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let result = json else {
                 return
             }
-            print(result.lat)
-            print(result.lon)
+            print(result.daily)
             // Update user interface
             DispatchQueue.main.async {
                 self.table.reloadData()            }
@@ -108,4 +106,3 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 }
-

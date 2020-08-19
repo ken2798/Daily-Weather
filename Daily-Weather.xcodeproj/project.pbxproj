@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,7 +68,6 @@
 				F9C5F8B201918F2DEFDFF039 /* Pods-Daily-Weather.debug.xcconfig */,
 				E467AA2B61441579AD5256DD /* Pods-Daily-Weather.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,9 +153,9 @@
 				CBC761D824EB8B8700060D7A /* DataWeather.swift */,
 				CBC761D924EB8B8700060D7A /* Weather.swift */,
 				CBC761DA24EB8B8700060D7A /* Current.swift */,
+				CBC761D724EB8B8700060D7A /* Hourly.swift */,
 				CBC761DB24EB8B8700060D7A /* Daily.swift */,
 				CBC761DD24EB8B8700060D7A /* FeelsLike.swift */,
-				CBC761D724EB8B8700060D7A /* Hourly.swift */,
 				CBC761DC24EB8B8700060D7A /* Temperature.swift */,
 			);
 			path = Models;
