@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-final class CoordinateData {
+struct CoordinateData {
     static var coor = CoordinateData()
     var lat : CLLocationDegrees = 0.0
     var lon : CLLocationDegrees = 0.0
@@ -17,9 +17,10 @@ final class CoordinateData {
 }
 
 extension CoordinateData {
-    public func updateCoor() {
-        let currentLocation: CLLocationCoordinate2D = locationManager.location!.coordinate
-        lon = currentLocation.longitude
-        lat = currentLocation.latitude
+    public mutating func updateCoor() {
+        guard let managerCoor = locationManager.location?.coordinate else {return}
+        let currentLocation: CLLocationCoordinate2D = managerCoor
+        self.lon = currentLocation.longitude
+        self.lat = currentLocation.latitude
     }
 }

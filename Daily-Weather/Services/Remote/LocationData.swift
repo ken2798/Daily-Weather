@@ -17,34 +17,30 @@ extension LocationData {
     public func getAddressFromLatLon(lat : CLLocationDegrees, lon : CLLocationDegrees) -> String {
         let ceo: CLGeocoder = CLGeocoder()
         let loc: CLLocation = CLLocation(latitude: lat, longitude: lon)
-        var addressString : String = ""
-        ceo.reverseGeocodeLocation(loc, completionHandler:
-            {(placemarks, error) in
-                if (error != nil)
-                {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
-                }
-                let pm = placemarks! as [CLPlacemark]
+        var addressString = ""
+        ceo.reverseGeocodeLocation(loc) { (placemarks, error) in
+            guard let placemark = placemarks else {return}
+            let pm = placemark as [CLPlacemark]
 
                 if pm.count > 0 {
                     let pm = placemarks![0]
-                    if pm.subLocality != nil {
-                        addressString = addressString + pm.subLocality! + ", "
+                    if let subLocalityy = pm.subLocality  {
+                        addressString = addressString + subLocalityy + ", "
                     }
-                    if pm.thoroughfare != nil {
-                        addressString = addressString + pm.thoroughfare! + ", "
+                    if let thoroughfacree = pm.thoroughfare {
+                        addressString = addressString + thoroughfacree + ", "
                     }
-                    if pm.locality != nil {
-                        addressString = addressString + pm.locality! + ", "
+                    if let localityy = pm.locality  {
+                        addressString = addressString + localityy + ", "
                     }
-                    if pm.country != nil {
-                        addressString = addressString + pm.country! + ", "
+                    if let countryy = pm.country {
+                        addressString = addressString + countryy + ", "
                     }
-                    if pm.postalCode != nil {
-                        addressString = addressString + pm.postalCode! + " "
+                    if let postalCodee = pm.postalCode {
+                        addressString = addressString + postalCodee + " "
                     }
               }
-        })
+        }
         return addressString
     }
 }

@@ -14,8 +14,8 @@ final class WeatherData {
 }
 extension WeatherData {
     public func fetchCoursesJSON( with lon : CLLocationDegrees, lat : CLLocationDegrees, completion: @escaping (Result<DataWeather, Error>) -> ()) {
-            let url = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&%20exclude=daily&appid=051eccdec971db6541e789fd524cfb66"
-            URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {
+        guard let url = URL(string: APIUrl.baseUrl ) else { return }
+            URLSession.shared.dataTask(with: url ) {
                     data, response, error in
                     guard let data = data, error == nil else {
                         print("something is wrong")
@@ -30,6 +30,6 @@ extension WeatherData {
                     catch {
                         print("error: \(error)")
                     }
-                    }).resume()
+                    }.resume()
             }
 }
