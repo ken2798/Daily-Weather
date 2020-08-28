@@ -21,25 +21,12 @@ extension LocationData {
         ceo.reverseGeocodeLocation(loc) { (placemarks, error) in
             guard let placemark = placemarks else {return}
             let pm = placemark as [CLPlacemark]
-
-                if pm.count > 0 {
-                    let pm = placemarks![0]
-                    if let subLocalityy = pm.subLocality  {
-                        addressString = addressString + subLocalityy + ", "
-                    }
-                    if let thoroughfacree = pm.thoroughfare {
-                        addressString = addressString + thoroughfacree + ", "
-                    }
-                    if let localityy = pm.locality  {
-                        addressString = addressString + localityy + ", "
-                    }
-                    if let countryy = pm.country {
-                        addressString = addressString + countryy + ", "
-                    }
-                    if let postalCodee = pm.postalCode {
-                        addressString = addressString + postalCodee + " "
-                    }
-              }
+            if pm.count > 0 {
+                let pm = placemarks![0]
+                if let subLocalityy = pm.subLocality, let thoroughfacree = pm.thoroughfare, let localityy = pm.locality , let countryy = pm.country , let postalCodee = pm.postalCode {
+                    addressString = addressString + subLocalityy + ", " + thoroughfacree + ", " + localityy + ", " + countryy + ", " + postalCodee + " "
+                }
+            }
         }
         return addressString
     }
