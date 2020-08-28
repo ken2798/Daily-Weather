@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		19661C3A0118B5B56AA65CAC /* Pods_Daily_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58CD438E4270730B63848EA /* Pods_Daily_Weather.framework */; };
 		CB2391AF24EB8F6600406091 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2391AE24EB8F6600406091 /* HomeViewController.swift */; };
-		CB2391B324EB90AA00406091 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2391B124EB90AA00406091 /* TableViewCell.swift */; };
-		CB2391B424EB90AA00406091 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2391B224EB90AA00406091 /* TableViewCell.xib */; };
 		CBC761A924EB806800060D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC761A824EB806800060D7A /* AppDelegate.swift */; };
 		CBC761AB24EB806800060D7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC761AA24EB806800060D7A /* SceneDelegate.swift */; };
 		CBC761B024EB806800060D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBC761AE24EB806800060D7A /* Main.storyboard */; };
@@ -28,8 +26,6 @@
 
 /* Begin PBXFileReference section */
 		CB2391AE24EB8F6600406091 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		CB2391B124EB90AA00406091 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		CB2391B224EB90AA00406091 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		CBC761A524EB806800060D7A /* Daily-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC761A824EB806800060D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBC761AA24EB806800060D7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,15 +73,6 @@
 				D58CD438E4270730B63848EA /* Pods_Daily_Weather.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CB2391B024EB909400406091 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				CB2391B124EB90AA00406091 /* TableViewCell.swift */,
-				CB2391B224EB90AA00406091 /* TableViewCell.xib */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		CBC7619C24EB806800060D7A = {
@@ -181,7 +168,6 @@
 		CBC761C424EB80F600060D7A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CB2391B024EB909400406091 /* TableViewCell */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -278,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC761B524EB806900060D7A /* LaunchScreen.storyboard in Resources */,
-				CB2391B424EB90AA00406091 /* TableViewCell.xib in Resources */,
 				CBC761B224EB806900060D7A /* Assets.xcassets in Resources */,
 				CBC761B024EB806800060D7A /* Main.storyboard in Resources */,
 				CBC761E624EB8B9700060D7A /* Home.storyboard in Resources */,
@@ -342,7 +327,6 @@
 				CBC761AB24EB806800060D7A /* SceneDelegate.swift in Sources */,
 				CB2391AF24EB8F6600406091 /* HomeViewController.swift in Sources */,
 				CBC761E324EB8B8700060D7A /* Temperature.swift in Sources */,
-				CB2391B324EB90AA00406091 /* TableViewCell.swift in Sources */,
 				CBC761E224EB8B8700060D7A /* Daily.swift in Sources */,
 				CBC761E124EB8B8700060D7A /* Current.swift in Sources */,
 			);
