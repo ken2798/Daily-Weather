@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0OV-LI-n5P">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="BWh-d7-B70">
+            <objects>
+                <viewController id="0OV-LI-n5P" customClass="HomeViewController" customModule="WeatherAppProject1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fTT-Ot-AXg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OOS-RF-QXZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OOS-RF-QXZ" firstAttribute="leading" secondItem="R0M-uD-FYC" secondAttribute="leading" id="7UG-rC-Blt"/>
+                            <constraint firstItem="R0M-uD-FYC" firstAttribute="trailing" secondItem="OOS-RF-QXZ" secondAttribute="trailing" id="HQl-y3-n0a"/>
+                            <constraint firstItem="R0M-uD-FYC" firstAttribute="bottom" secondItem="OOS-RF-QXZ" secondAttribute="bottom" id="Rb6-y0-zbU"/>
+                            <constraint firstItem="OOS-RF-QXZ" firstAttribute="top" secondItem="R0M-uD-FYC" secondAttribute="top" id="aH2-kh-vFR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R0M-uD-FYC"/>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="OOS-RF-QXZ" id="vnP-Nh-yFp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lOx-rP-gnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91" y="-87"/>
+        </scene>
+    </scenes>
+</document>
