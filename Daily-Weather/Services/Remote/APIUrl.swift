@@ -10,6 +10,14 @@ import Foundation
 import CoreLocation
 
 struct APIUrl {
-    static let baseUrl : String = "https://api.openweathermap.org/data/2.5/onecall?lat=\(CoordinateData.coor.lat)&lon=\(CoordinateData.coor.lon)&%20exclude=daily&appid=051eccdec971db6541e789fd524cfb66"
+    static var api = APIUrl()
+    private let baseUrl : String = "https://api.openweathermap.org/data/2.5"
 }
 
+extension APIUrl {
+    public func Url( lat : CLLocationDegrees, lon : CLLocationDegrees ) -> String {
+        var url : String = baseUrl
+        url = url + "/onecall?lat=\(String(lat))&lon=\(String(lon))&%20exclude=daily&appid=051eccdec971db6541e789fd524cfb66"
+        return url
+    }
+}

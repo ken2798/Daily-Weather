@@ -15,7 +15,7 @@ final class WeatherData {
 
 extension WeatherData {
     public func fetchCoursesJSON( with lon : CLLocationDegrees, lat : CLLocationDegrees, completion: @escaping (Result<DataWeather, Error>) -> ()) {
-        guard let url = URL(string: APIUrl.baseUrl ) else { return }
+        guard let url = URL(string: APIUrl.api.Url(lat: lat, lon: lon) ) else { return }
         URLSession.shared.dataTask(with: url ) { data, response, error in
             guard let data = data, error == nil else {
                 guard let err = error else {return}
