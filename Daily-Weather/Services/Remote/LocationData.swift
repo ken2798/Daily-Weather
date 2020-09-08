@@ -14,7 +14,7 @@ final class LocationData {
 }
 
 extension LocationData {
-    public func getAddressFromLatLon(lat : CLLocationDegrees, lon : CLLocationDegrees) -> String {
+    public func getAddressFromLatLon(lat : CLLocationDegrees, lon : CLLocationDegrees, cityCompletion: @escaping (String?, Error?) -> ()) {
         let ceo: CLGeocoder = CLGeocoder()
         let loc: CLLocation = CLLocation(latitude: lat, longitude: lon)
         var addressString = ""
@@ -22,12 +22,12 @@ extension LocationData {
             guard let placemark = placemarks else {return}
             let pm = placemark as [CLPlacemark]
             if pm.count > 0 {
-                let pm = placemarks![0]
-                if let subLocalityy = pm.subLocality, let thoroughfacree = pm.thoroughfare, let localityy = pm.locality , let countryy = pm.country , let postalCodee = pm.postalCode {
-                    addressString = addressString + subLocalityy + ", " + thoroughfacree + ", " + localityy + ", " + countryy + ", " + postalCodee + " "
+                let pm = placemark[0]
+                if let localityy = pm.locality {
+                    addressString = addressString + localityy
+                    cityCompletion(addressString,nil)
                 }
             }
         }
-        return addressString
     }
 }
