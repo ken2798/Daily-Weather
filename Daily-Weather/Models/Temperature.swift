@@ -16,7 +16,7 @@ struct Temperature : Codable  {
     var evening: Float
     var morning: Float
     
-    enum Temperature: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
             case day = "day"
             case min = "min"
             case max = "max"

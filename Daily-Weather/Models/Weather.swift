@@ -13,7 +13,7 @@ struct Weather : Codable  {
     var description : String
     var icon : String
     
-   enum Weather: String, CodingKey {
+   enum CodingKeys: String, CodingKey {
        case id = "id"
        case main = "main"
        case description = "description"

@@ -24,7 +24,7 @@ struct Current : Codable {
     var windDeg: Float
     var weather: [Weather]
     
-    enum Current: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case dt = "dt"
         case sunRise = "sunrise"
         case sunSet = "sunset"

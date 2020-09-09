@@ -24,7 +24,7 @@ struct Daily : Codable {
     var uvi: Float
     var clouds: Float
    
-    enum Daily: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case dt = "dt"
         case sunRise = "sunrise"
         case sunSet = "sunset"

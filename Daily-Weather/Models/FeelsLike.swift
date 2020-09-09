@@ -14,7 +14,7 @@ struct FeelsLike : Codable  {
     var evening: Float
     var morning: Float
     
-    enum FeelsLike: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case day = "day"
         case night = "night"
         case evening = "eve"

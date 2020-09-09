@@ -21,7 +21,7 @@ struct Hourly : Codable {
     var windDeg: Float
     var weather: [Weather]
     
-    enum Hourly: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case dt = "dt"
         case temperature = "temp"
         case feelsLike = "feels_like"

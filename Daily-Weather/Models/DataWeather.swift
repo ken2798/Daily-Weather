@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DataWeather : Codable {
+struct DataWeather: Codable {
     var lat: Float
     var lon: Float
     var timeZone: String
@@ -17,7 +17,7 @@ struct DataWeather : Codable {
     var hourly: [Hourly]
     var daily: [Daily]
     
-    enum DataWeather: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case lat = "lat"
         case lon = "lon"
         case timeZone = "timezone"
@@ -26,5 +26,7 @@ struct DataWeather : Codable {
         case hourly = "hourly"
         case daily = "daily"
     }
+    
+    
 }
 
