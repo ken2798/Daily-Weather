@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Hourly {
+struct Hourly : Codable {
     var dt: Int
     var temperature: Float
     var feelsLike: Float
@@ -33,26 +33,7 @@ struct Hourly {
         case windDeg = "wind_deg"
         case windSpeed = "wind_speed"
         case weather = "weather"
-    }
-    
-        
-}
-
-extension Hourly: Decodable {
-    init(from decoder: Decoder) throws {
-        let hourlyContainer = try decoder.container(keyedBy: Hourly.self)
-        dt = try hourlyContainer.decode(Int.self, forKey: .dt)
-        temperature = try hourlyContainer.decode(Float.self, forKey: .temperature)
-        feelsLike = try hourlyContainer.decode(Float.self, forKey: .feelsLike)
-        pressure = try hourlyContainer.decode(Float.self, forKey: .pressure)
-        humidity = try hourlyContainer.decode(Float.self, forKey: .humidity)
-        dewPoint = try hourlyContainer.decode(Float.self, forKey: .dewPoint)
-        visibility = try hourlyContainer.decode(Float.self, forKey: .visibility)
-        clouds = try hourlyContainer.decode(Float.self, forKey: .clouds)
-        windDeg = try hourlyContainer.decode(Float.self, forKey: .windDeg)
-        windSpeed = try hourlyContainer.decode(Float.self, forKey: .windSpeed)
-        weather = try hourlyContainer.decode([Weather].self, forKey: .weather)
-    }
+    }   
 }
 
      

@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 struct City {
+    var name : String
     var lat : CLLocationDegrees
     var lon : CLLocationDegrees
 }

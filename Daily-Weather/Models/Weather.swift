@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Weather  {
+struct Weather : Codable  {
     var id : Int
     var main : String
     var description : String
@@ -19,15 +19,5 @@ struct Weather  {
        case description = "description"
        case icon = "icon"
 
-   }
-}
-
-extension Weather: Decodable {
-   init(from decoder: Decoder) throws {
-       let weatherContainer = try decoder.container(keyedBy: Weather.self)
-       id = try weatherContainer.decode(Int.self, forKey: .id)
-       main = try weatherContainer.decode(String.self, forKey: .main)
-       description = try weatherContainer.decode(String.self, forKey: .description)
-       icon = try weatherContainer.decode(String.self, forKey: .icon)
    }
 }

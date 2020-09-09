@@ -101,6 +101,34 @@
 			path = Remote;
 			sourceTree = "<group>";
 		};
+		CB349B4E250882C100DE2DBD /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		CB349B4F250882C700DE2DBD /* Repostitories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repostitories;
+			sourceTree = "<group>";
+		};
+		CB349B50250882EE00DE2DBD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CB349B512508830300DE2DBD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CBC7619C24EB806800060D7A = {
 			isa = PBXGroup;
 			children = (
@@ -122,12 +150,12 @@
 		CBC761A724EB806800060D7A /* Daily-Weather */ = {
 			isa = PBXGroup;
 			children = (
+				CB349B512508830300DE2DBD /* Utils */,
+				CB349B50250882EE00DE2DBD /* Extensions */,
 				CBC761C524EB810900060D7A /* Services */,
 				CBC761C224EB80DC00060D7A /* Scenes */,
 				CBC761C124EB80CC00060D7A /* Models */,
 				CBC761C024EB80C400060D7A /* Controller */,
-				CBC761BF24EB80B900060D7A /* Utils */,
-				CBC761BD24EB809F00060D7A /* Extentions */,
 				CBC761A824EB806800060D7A /* AppDelegate.swift */,
 				CBC761AA24EB806800060D7A /* SceneDelegate.swift */,
 				CBC761AE24EB806800060D7A /* Main.storyboard */,
@@ -136,20 +164,6 @@
 				CBC761B624EB806900060D7A /* Info.plist */,
 			);
 			path = "Daily-Weather";
-			sourceTree = "<group>";
-		};
-		CBC761BD24EB809F00060D7A /* Extentions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extentions;
-			sourceTree = "<group>";
-		};
-		CBC761BF24EB80B900060D7A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		CBC761C024EB80C400060D7A /* Controller */ = {
@@ -203,25 +217,11 @@
 		CBC761C524EB810900060D7A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CB349B4F250882C700DE2DBD /* Repostitories */,
+				CB349B4E250882C100DE2DBD /* Local */,
 				CB22B47924F89DDA00D14FB8 /* Remote */,
-				CBC761C824EB812A00060D7A /* Repostitories */,
-				CBC761C624EB811300060D7A /* Local */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		CBC761C624EB811300060D7A /* Local */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Local;
-			sourceTree = "<group>";
-		};
-		CBC761C824EB812A00060D7A /* Repostitories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repostitories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

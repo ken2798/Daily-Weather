@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Daily {
+struct Daily : Codable {
     var dt: Int
     var sunRise: Int
     var sunSet: Int
@@ -40,28 +40,4 @@ struct Daily {
         case clouds = "clouds"
 
     }
-
 }
-
-extension Daily: Decodable {
-    init(from decoder: Decoder) throws {
-        let dailyContainer = try decoder.container(keyedBy: Daily.self)
-        dt = try dailyContainer.decode(Int.self, forKey: .dt)
-        sunRise = try dailyContainer.decode(Int.self, forKey: .sunRise)
-        sunSet = try dailyContainer.decode(Int.self, forKey: .sunSet)
-        temperature = try dailyContainer.decode(Temperature.self, forKey: .temperature)
-        feelsLike = try dailyContainer.decode(FeelsLike.self, forKey: .feelsLike)
-        pressure = try dailyContainer.decode(Float.self, forKey: .pressure)
-        humidity = try dailyContainer.decode(Float.self, forKey: .humidity)
-        dewPoint = try dailyContainer.decode(Float.self, forKey: .dewPoint)
-        uvi = try dailyContainer.decode(Float.self, forKey: .uvi)
-        clouds = try dailyContainer.decode(Float.self, forKey: .clouds)
-        windSpeed = try dailyContainer.decode(Float.self, forKey: .windSpeed)
-        windDeg = try dailyContainer.decode(Float.self, forKey: .windDeg)
-        weather = try dailyContainer.decode([Weather].self, forKey: .weather)
-
-        
-    }
-}
-
- 

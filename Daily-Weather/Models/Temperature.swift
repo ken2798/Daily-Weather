@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Temperature  {
+struct Temperature : Codable  {
     var day: Float
     var min: Float
     var max: Float
@@ -26,16 +26,3 @@ struct Temperature  {
 
        }
     }
-
-    extension Temperature: Decodable {
-       init(from decoder: Decoder) throws {
-           let temperatureContainer = try decoder.container(keyedBy: Temperature.self)
-           day = try temperatureContainer.decode(Float.self, forKey: .day)
-           night = try temperatureContainer.decode(Float.self, forKey: .night)
-           min = try temperatureContainer.decode(Float.self, forKey: .min)
-           max = try temperatureContainer.decode(Float.self, forKey: .max)
-           evening = try temperatureContainer.decode(Float.self, forKey: .evening)
-           morning = try temperatureContainer.decode(Float.self, forKey: .morning)
-       }
-    }
-

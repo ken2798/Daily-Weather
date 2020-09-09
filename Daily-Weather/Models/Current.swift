@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Current {
+struct Current : Codable {
     var dt: Int
     var sunRise: Int
     var sunSet: Int
@@ -40,31 +40,7 @@ struct Current {
         case windDeg = "wind_deg"
         case weather = "weather"
       
-    }
-    
-    
-}
-
-extension Current: Decodable {
-    init(from decoder: Decoder) throws {
-        let currentContainer = try decoder.container(keyedBy: Current.self)
-        dt = try currentContainer.decode(Int.self, forKey: .dt)
-        sunRise = try currentContainer.decode(Int.self, forKey: .sunRise)
-        sunSet = try currentContainer.decode(Int.self, forKey: .sunSet)
-        temperature = try currentContainer.decode(Float.self, forKey: .temperature)
-        feelsLike = try currentContainer.decode(Float.self, forKey: .feelsLike)
-        pressure = try currentContainer.decode(Float.self, forKey: .pressure)
-        humidity = try currentContainer.decode(Float.self, forKey: .humidity)
-        dewPoint = try currentContainer.decode(Float.self, forKey: .dewPoint)
-        uvi = try currentContainer.decode(Float.self, forKey: .uvi)
-        clouds = try currentContainer.decode(Float.self, forKey: .clouds)
-        visibility = try currentContainer.decode(Float.self, forKey: .visibility)
-        windDeg = try currentContainer.decode(Float.self, forKey: .windDeg)
-        windSpeed = try currentContainer.decode(Float.self, forKey: .windSpeed)
-        weather = try currentContainer.decode([Weather].self, forKey: .weather)
-       
-        
-    }
+    }  
 }
 
 
