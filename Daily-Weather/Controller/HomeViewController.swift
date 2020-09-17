@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
     
     func getWeatherData (lat : CLLocationDegrees, lon: CLLocationDegrees) {
         CoordinateData.coor.updateCoor()
-        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat) { [weak self] (res) in
+        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat){ [weak self] (res) in
             switch res {
             case .success(let result):
                 self?.hourlyModels = result.hourly
@@ -65,19 +65,19 @@ class HomeViewController: UIViewController {
     }
     
     func setupCurrentView(lat : CLLocationDegrees, lon: CLLocationDegrees){
-        LocationData.location.getAddressFromLatLon(lat: lat, lon: lon){ (addressString, err) in
+        LocationData.location.getAddressFromLatLon(lat: lat, lon: lon){[weak self] (addressString, err) in
             if let addressString = addressString {
-                self.currentLocationLb.text = addressString
+                self?.currentLocationLb.text = addressString
             }
         }
-        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat){(res) in
+        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat){ [weak self] (res) in
             switch res {
             case .success(let result) :
-                self.currentModels = result.current
-                guard let cr = self.currentModels else {return}
+                self?.currentModels = result.current
+                guard let cr = self?.currentModels else {return}
                 DispatchQueue.main.async {
-                    self.currentTempLb.text = " \(Int(cr.temperature)-273)°"
-                    self.currentStatusLb.text = cr.weather[0].description
+                    self?.currentTempLb.text = " \(Int(cr.temperature)-273)°"
+                    self?.currentStatusLb.text = cr.weather[0].description
                 }
             case .failure(let error) :
                 print(error)
