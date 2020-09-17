@@ -54,7 +54,11 @@ class HomeViewController: UIViewController {
             switch res {
             case .success(let result):
                 self?.hourlyModels = result.hourly
+                self?.currentModels = result.current
+                guard let cr = self?.currentModels else { return }
                 DispatchQueue.main.async {
+                    self?.currentTempLb.text = " \(Int(cr.temperature)-273)°"
+                    self?.currentStatusLb.text = cr.weather[0].description
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
@@ -68,20 +72,6 @@ class HomeViewController: UIViewController {
         LocationData.location.getAddressFromLatLon(lat: lat, lon: lon){[weak self] (addressString, err) in
             if let addressString = addressString {
                 self?.currentLocationLb.text = addressString
-            }
-        }
-        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat){ [weak self] (res) in
-            switch res {
-            case .success(let result) :
-                self?.currentModels = result.current
-                guard let cr = self?.currentModels else {return}
-                DispatchQueue.main.async {
-                    self?.currentTempLb.text = " \(Int(cr.temperature)-273)°"
-                    self?.currentStatusLb.text = cr.weather[0].description
-                }
-            case .failure(let error) :
-                print(error)
-                return
             }
         }
     }
@@ -100,7 +90,8 @@ extension HomeViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as? HourlyTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(with: hourlyModels)
+        guard let cr = currentModels else { return cell  }
+        cell.configure(current: cr, perHours: hourlyModels)
         return cell
     }
 }
