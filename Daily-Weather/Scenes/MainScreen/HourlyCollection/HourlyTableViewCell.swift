@@ -8,12 +8,16 @@
 
 import UIKit
 
-class HourlyTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class HourlyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     var models = [Hourly]()
     var currentModels : Current?
+    let numberOfRowCollection: Int = 2
+    let numberOfItem: Int = 1
+    let sizeHeigh: CGFloat = 100
+    let sizeWidth: CGFloat = 60
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,31 +53,41 @@ class HourlyTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
             }
         })
     }
+}
+
+extension HourlyTableViewCell: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: 100)
-    }
+}
+
+extension HourlyTableViewCell: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return numberOfRowCollection
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return numberOfItem
         }
         return models.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as! WeatherCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as? WeatherCollectionViewCell else {
+                return UICollectionViewCell()
+            }
             guard let cr = currentModels else { return cell }
-            cell.configure1(with: cr)
+            cell.configureFirst(with: cr)
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as! WeatherCollectionViewCell
-        cell.timeLabel.text = String(indexPath.row)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as? WeatherCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cell.configure(with: models[indexPath.row])
         return cell
     }
-    
+}
+
+extension HourlyTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: sizeWidth, height: sizeHeigh)
+    }
 }

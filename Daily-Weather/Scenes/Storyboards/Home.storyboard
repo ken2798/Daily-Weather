@@ -30,7 +30,7 @@
                         <viewLayoutGuide key="safeArea" id="R0M-uD-FYC"/>
                     </view>
                     <connections>
-                        <outlet property="table" destination="OOS-RF-QXZ" id="vnP-Nh-yFp"/>
+                        <outlet property="tableView" destination="OOS-RF-QXZ" id="8mz-JY-Xqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOx-rP-gnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
