@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     
     func getWeatherData () {
         CoordinateData.coor.updateCoor()
-        WeatherData.weather.fetchCoursesJSON(with: CoordinateData.coor.lon, lat: CoordinateData.coor.lat, completion: { [weak self] (res) in
+        WeatherData.weather.fetchCoursesJSON(with: CoordinateData.coor.lon, lat: CoordinateData.coor.lat) { [weak self] (res) in
             switch res {
             case .success(let result):
                 self?.hourlyModels = result.hourly
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
                 print(error)
                 return
             }
-        })
+        }
     }
 }
 

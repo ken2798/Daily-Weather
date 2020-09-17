@@ -40,19 +40,18 @@ class HourlyTableViewCell: UITableViewCell {
         collectionView.reloadData()
     }
     
-    func getCurrentWeather(){
+    func getCurrentWeather() {
         CoordinateData.coor.updateCoor()
         let lat = CoordinateData.coor.lat
         let lon = CoordinateData.coor.lon
-        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat, completion: {(res) in
+        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat) {(res) in
             switch res {
             case .success(let result) :
                 self.currentModels = result.current
             case .failure(let error) :
                 print(error)
-                return
             }
-        })
+        }
     }
 }
 
