@@ -9,7 +9,7 @@
 import UIKit
 
 class WeatherCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var tempLabel: UILabel!
@@ -27,7 +27,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     func configure(with model: Hourly) {
         tempLabel.text = "\(Int(model.temperature)-273)°"
         iconImageView.contentMode = .scaleToFill
-        timeLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(model.dt))) + ":00"
+        timeLabel.text = Date.init().getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
         let url = URL (string: ImageUrl.imageUrl.Url(icon: model.weather.first?.icon ?? ""))
         do{
             let d = try Data(contentsOf: url!)
@@ -49,15 +49,5 @@ class WeatherCollectionViewCell: UICollectionViewCell {
             return
         }
     }
-    
-    func getDayForDate(_ date: Date?) -> String {
-        guard let inputDate = date else {
-            return ""
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH"
-        return formatter.string(from: inputDate)
-    }
-
 }
+

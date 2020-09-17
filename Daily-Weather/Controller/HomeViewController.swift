@@ -43,7 +43,8 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-            case .failure(_) :
+            case .failure(let error):
+                print(error)
                 return
             }
         })

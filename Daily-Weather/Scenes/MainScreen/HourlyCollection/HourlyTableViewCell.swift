@@ -48,8 +48,9 @@ class HourlyTableViewCell: UITableViewCell {
             switch res {
             case .success(let result) :
                 self.currentModels = result.current
-            case .failure(_) :
-                print("loi")
+            case .failure(let error) :
+                print(error)
+                return
             }
         })
     }

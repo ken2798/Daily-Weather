@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F91296DC2D6F6F107862764 /* Pods_Daily_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A50CC589BEF5CB51D91D9DB /* Pods_Daily_Weather.framework */; };
+		CB2181D025130C6900BB350C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2181CF25130C6900BB350C /* DateExtension.swift */; };
 		CB22B47B24F89DF500D14FB8 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22B47A24F89DF500D14FB8 /* WeatherData.swift */; };
 		CB22B47D24F89E0200D14FB8 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22B47C24F89E0200D14FB8 /* LocationData.swift */; };
 		CB22B47F24F89E1600D14FB8 /* CoordinateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22B47E24F89E1600D14FB8 /* CoordinateData.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		34918A596DE3F6D1F9478FE8 /* Pods-Daily-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily-Weather.release.xcconfig"; path = "Target Support Files/Pods-Daily-Weather/Pods-Daily-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		7A50CC589BEF5CB51D91D9DB /* Pods_Daily_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2181CF25130C6900BB350C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CB22B47A24F89DF500D14FB8 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		CB22B47C24F89E0200D14FB8 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		CB22B47E24F89E1600D14FB8 /* CoordinateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateData.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		CB349B50250882EE00DE2DBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CB2181CF25130C6900BB350C /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB349B4A250881C100DE2DBD /* Hourly.swift in Sources */,
+				CB2181D025130C6900BB350C /* DateExtension.swift in Sources */,
 				CB22B47D24F89E0200D14FB8 /* LocationData.swift in Sources */,
 				CB349B45250881C100DE2DBD /* FeelsLike.swift in Sources */,
 				CB22B47F24F89E1600D14FB8 /* CoordinateData.swift in Sources */,
