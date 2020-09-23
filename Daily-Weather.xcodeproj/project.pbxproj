@@ -168,8 +168,8 @@
 		CB68C4DA251B41990039ADB0 /* TodayDetailCell */ = {
 			isa = PBXGroup;
 			children = (
-				CB68C4DB251B41990039ADB0 /* TodayDetailTableViewCell.xib */,
 				CB68C4DC251B41990039ADB0 /* TodayDetailTableViewCell.swift */,
+				CB68C4DB251B41990039ADB0 /* TodayDetailTableViewCell.xib */,
 			);
 			path = TodayDetailCell;
 			sourceTree = "<group>";

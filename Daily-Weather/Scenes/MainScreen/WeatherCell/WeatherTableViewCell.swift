@@ -33,15 +33,9 @@ class WeatherTableViewCell: UITableViewCell {
         self.iconImageView.contentMode = .scaleAspectFill
         self.lowTempLabel.text = "\(Int(model.temperature.min)-273)°"
         self.highTempLabel.text = "\(Int(model.temperature.max)-273)°"
-        self.dayLabel.text = Date.init().getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
+        self.dayLabel.text = Date.date.getDay(date: Date(timeIntervalSince1970: Double(model.dt)))
         let url = URL (string: ImageUrl.imageUrl.Url(icon: model.weather.first?.icon ?? ""))
-        do{
-            let d = try Data(contentsOf: url!)
-            iconImageView.image = UIImage(data: d)
-        } catch {
-            return
-        }
-
+        iconImageView.kf.setImage(with: url)
     }
 }
 

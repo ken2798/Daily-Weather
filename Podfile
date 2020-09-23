@@ -7,5 +7,6 @@ target 'Daily-Weather' do
 
   # Pods for Daily-Weather
 	pod 'ObjectMapper', '~> 3.5'
+	pod 'Kingfisher', '~> 4.0'
 
 end

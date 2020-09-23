@@ -9,14 +9,14 @@
 import UIKit
 
 class TodayInformationTableViewCell: UITableViewCell {
-    @IBOutlet private weak var sunRiseLb: UILabel!
-    @IBOutlet private weak var sunDownLb: UILabel!
-    @IBOutlet private weak var pressureLb: UILabel!
-    @IBOutlet private weak var humidityLb: UILabel!
-    @IBOutlet private weak var windSpeedLb: UILabel!
-    @IBOutlet private weak var feelLikeLb: UILabel!
-    @IBOutlet private weak var cloudsLb: UILabel!
-    @IBOutlet private weak var uviLb: UILabel!
+    @IBOutlet private weak var sunRiseLabel: UILabel!
+    @IBOutlet private weak var sunDownLabel: UILabel!
+    @IBOutlet private weak var pressureLabel: UILabel!
+    @IBOutlet private weak var humidityLabel: UILabel!
+    @IBOutlet private weak var windSpeedLabel: UILabel!
+    @IBOutlet private weak var feelLikeLabel: UILabel!
+    @IBOutlet private weak var cloudsLabel: UILabel!
+    @IBOutlet private weak var uviLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,13 +31,13 @@ class TodayInformationTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Current) {
-        self.sunRiseLb.text = Date.init().getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
-        self.sunDownLb.text = Date.init().getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
-        self.pressureLb.text = "\(Int(model.pressure)) hPa"
-        self.humidityLb.text = "\(Int(model.humidity))%"
-        self.windSpeedLb.text = "\(model.windSpeed) km/h"
-        self.feelLikeLb.text = "\(Int(model.feelsLike)-273)°C"
-        self.cloudsLb.text = "\(model.clouds)"
-        self.uviLb.text = "\(model.uvi)"
+        self.sunRiseLabel.text = Date.date.getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
+        self.sunDownLabel.text = Date.date.getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
+        self.pressureLabel.text = "\(Int(model.pressure)) hPa"
+        self.humidityLabel.text = "\(Int(model.humidity))%"
+        self.windSpeedLabel.text = "\(model.windSpeed) km/h"
+        self.feelLikeLabel.text = "\(Int(model.feelsLike)-273)°C"
+        self.cloudsLabel.text = "\(model.clouds)"
+        self.uviLabel.text = "\(model.uvi)"
     }
 }

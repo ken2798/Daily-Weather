@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class WeatherCollectionViewCell: UICollectionViewCell {
     
@@ -42,12 +44,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         iconImageView.contentMode = .scaleAspectFit
         timeLabel.text = "Now"
         let url = URL (string: ImageUrl.imageUrl.Url(icon: model.weather.first?.icon ?? ""))
-        do{
-            let d = try Data(contentsOf: url!)
-            iconImageView.image = UIImage(data: d)
-        } catch {
-            return
-        }
+        iconImageView.kf.setImage(with: url)
     }
 }
 

@@ -227,14 +227,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cloudsLb" destination="CdV-Z6-DEa" id="0I7-7d-y5m"/>
-                <outlet property="feelLikeLb" destination="QfT-0l-dWt" id="PnP-Rd-06y"/>
-                <outlet property="humidityLb" destination="Fhi-Te-zaj" id="QEU-07-vTV"/>
-                <outlet property="pressureLb" destination="4sr-cn-3od" id="PCD-go-AvF"/>
-                <outlet property="sunDownLb" destination="fih-NA-nue" id="SPU-YQ-k1X"/>
-                <outlet property="sunRiseLb" destination="JJl-EM-6XZ" id="eBV-sv-BuG"/>
-                <outlet property="uviLb" destination="L3F-3t-E6R" id="TTg-aU-enX"/>
-                <outlet property="windSpeedLb" destination="bVg-jD-O0A" id="BxT-D2-EPx"/>
+                <outlet property="cloudsLabel" destination="CdV-Z6-DEa" id="f5e-0d-H3s"/>
+                <outlet property="feelLikeLabel" destination="QfT-0l-dWt" id="yqS-8O-mwW"/>
+                <outlet property="humidityLabel" destination="Fhi-Te-zaj" id="cdK-vT-VXb"/>
+                <outlet property="pressureLabel" destination="4sr-cn-3od" id="GtH-LT-6A5"/>
+                <outlet property="sunDownLabel" destination="fih-NA-nue" id="VpX-rJ-SKn"/>
+                <outlet property="sunRiseLabel" destination="JJl-EM-6XZ" id="PFx-CE-Aa5"/>
+                <outlet property="uviLabel" destination="L3F-3t-E6R" id="zmx-3E-jdY"/>
+                <outlet property="windSpeedLabel" destination="bVg-jD-O0A" id="XIb-3A-lDC"/>
             </connections>
             <point key="canvasLocation" x="172" y="146"/>
         </tableViewCell>
