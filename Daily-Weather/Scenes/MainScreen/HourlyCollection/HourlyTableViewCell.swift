@@ -9,10 +9,10 @@
 import UIKit
 
 class HourlyTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var models = [Hourly]()
+    var hourlyModels = [Hourly]()
     var currentModels : Current?
     let numberOfRowCollection: Int = 2
     let numberOfItem: Int = 1
@@ -21,12 +21,7 @@ class HourlyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        collectionView.register(WeatherCollectionViewCell.nib(), forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
-        collectionView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        self.getCurrentWeather()
+        setupCollectionView()
     }
     
     static let identifier = "HourlyTableViewCell"
@@ -35,23 +30,18 @@ class HourlyTableViewCell: UITableViewCell {
         return UINib(nibName: "HourlyTableViewCell", bundle: nil)
     }
     
-    func configure(with models: [Hourly]) {
-        self.models = models
-        collectionView.reloadData()
+    func setupCollectionView() {
+        self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+        collectionView.register(WeatherCollectionViewCell.nib(), forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
+        collectionView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
-    func getCurrentWeather() {
-        CoordinateData.coor.updateCoor()
-        let lat = CoordinateData.coor.lat
-        let lon = CoordinateData.coor.lon
-        WeatherData.weather.fetchCoursesJSON(with: lon, lat: lat) {(res) in
-            switch res {
-            case .success(let result) :
-                self.currentModels = result.current
-            case .failure(let error) :
-                print(error)
-            }
-        }
+    func configure(current: Current, perHours: [Hourly]) {
+        currentModels = current
+        hourlyModels = perHours
+        collectionView.reloadData()
     }
 }
 
@@ -60,15 +50,18 @@ extension HourlyTableViewCell: UICollectionViewDelegate {
 }
 
 extension HourlyTableViewCell: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numberOfRowCollection
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return numberOfItem
         }
-        return models.count
+        return hourlyModels.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as? WeatherCollectionViewCell else {
@@ -81,7 +74,7 @@ extension HourlyTableViewCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as? WeatherCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: models[indexPath.row])
+        cell.configure(with: hourlyModels[indexPath.row])
         return cell
     }
 }
