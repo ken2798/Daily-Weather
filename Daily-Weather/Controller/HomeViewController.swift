@@ -12,9 +12,9 @@ import CoreLocation
 class HomeViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var currentTempLb: UILabel!
-    @IBOutlet weak var currentLocationLb: UILabel!
-    @IBOutlet weak var currentStatusLb: UILabel!
+    @IBOutlet private weak var currentTempLb: UILabel!
+    @IBOutlet private weak var currentLocationLb: UILabel!
+    @IBOutlet private weak var currentStatusLb: UILabel!
     
     var hourlyModels = [Hourly]()
     var currentModels: Current?
@@ -26,20 +26,24 @@ class HomeViewController: UIViewController {
     let heightForRowAtHourly: CGFloat = 100.0
     
     override func viewDidLoad() {
-        tableView.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
         view.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        tableView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        tableView.dataSource = self
-        tableView.delegate = self
+        setupTableView()
         setupLocation()
-        guard let lat = latHome else {return}
-        guard let lon = lonHome else {return}
+        guard let lat = latHome else { return }
+        guard let lon = lonHome else { return }
         getWeatherData(lat: lat, lon: lon)
         setupCurrentView(lat: lat, lon: lon)
     }
     
+    func setupTableView(){
+        tableView.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
+        tableView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     func setupLocation(){
-        locationManager.delegate = self;
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
@@ -90,7 +94,7 @@ extension HomeViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as? HourlyTableViewCell else {
             return UITableViewCell()
         }
-        guard let cr = currentModels else { return cell  }
+        guard let cr = currentModels else { return cell }
         cell.configure(current: cr, perHours: hourlyModels)
         return cell
     }

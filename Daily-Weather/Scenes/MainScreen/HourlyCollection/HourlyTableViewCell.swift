@@ -9,7 +9,7 @@
 import UIKit
 
 class HourlyTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var hourlyModels = [Hourly]()
@@ -21,17 +21,21 @@ class HourlyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        collectionView.register(WeatherCollectionViewCell.nib(), forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
-        collectionView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        setupCollectionView()
     }
     
     static let identifier = "HourlyTableViewCell"
     
     static func nib() -> UINib {
         return UINib(nibName: "HourlyTableViewCell", bundle: nil)
+    }
+    
+    func setupCollectionView() {
+        self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+        collectionView.register(WeatherCollectionViewCell.nib(), forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
+        collectionView.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func configure(current: Current, perHours: [Hourly]) {
