@@ -8,9 +8,15 @@
 
 import Foundation
 import CoreLocation
+import RealmSwift
 
-struct City {
-    var name : String
-    var lat : CLLocationDegrees
-    var lon : CLLocationDegrees
+class City : Object {
+    @objc dynamic var id = 0
+    @objc dynamic var name : String = ""
+    @objc dynamic var lat : CLLocationDegrees = 0
+    @objc dynamic var lon : CLLocationDegrees = 0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

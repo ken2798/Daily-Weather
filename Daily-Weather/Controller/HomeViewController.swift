@@ -11,6 +11,7 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet private weak var menuBtn: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var currentTempLb: UILabel!
     @IBOutlet private weak var currentLocationLb: UILabel!
@@ -28,6 +29,7 @@ class HomeViewController: UIViewController {
     let heighOfSection: CGFloat = 1
     
     override func viewDidLoad() {
+        menuBtn.setImage(UIImage(named: "menu.png"), for: .normal)
         view.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
         setupTableView()
         setupLocation()
@@ -35,6 +37,16 @@ class HomeViewController: UIViewController {
         guard let lon = lonHome else { return }
         getWeatherData(lat: lat, lon: lon)
         setupCurrentView(lat: lat, lon: lon)
+    }
+    
+    @IBAction func viewListBtn(_ sender: UIButton) {
+        guard let vc = UIStoryboard(name: "Home", bundle: nil ).instantiateViewController(withIdentifier: "ListLocationView") as? ListLocationViewController
+            else {return}
+        vc.passData = { (latCity,lonCity) in
+            self.setupCurrentView(lat: latCity, lon: lonCity)
+            self.getWeatherData(lat: latCity, lon: lonCity)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupTableView(){

@@ -1,20 +1,30 @@
 PODS:
   - Kingfisher (4.10.1)
   - ObjectMapper (3.5.3)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
 
 DEPENDENCIES:
   - Kingfisher (~> 4.0)
   - ObjectMapper (~> 3.5)
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - Kingfisher
     - ObjectMapper
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 2e19fc76bfe8e3511f7f39451f9df8e2d8d1f1c6
+PODFILE CHECKSUM: f2e693388928494af6cb43078625999aa8d9ab52
 
 COCOAPODS: 1.8.4
