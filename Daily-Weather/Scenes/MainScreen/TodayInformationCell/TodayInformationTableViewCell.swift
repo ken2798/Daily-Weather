@@ -31,13 +31,13 @@ class TodayInformationTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Current) {
-        self.sunRiseLabel.text = Date.date.getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
-        self.sunDownLabel.text = Date.date.getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
-        self.pressureLabel.text = "\(Int(model.pressure)) hPa"
-        self.humidityLabel.text = "\(Int(model.humidity))%"
-        self.windSpeedLabel.text = "\(model.windSpeed) km/h"
-        self.feelLikeLabel.text = "\(Int(model.feelsLike)-273)°C"
-        self.cloudsLabel.text = "\(model.clouds)"
-        self.uviLabel.text = "\(model.uvi)"
+        sunRiseLabel.text = Date(timeIntervalSince1970: Double(model.sunRise)).getExTime()
+        sunDownLabel.text = Date(timeIntervalSince1970: Double(model.sunSet)).getExTime()
+        pressureLabel.text = "\(Int(model.pressure)) hPa"
+        humidityLabel.text = "\(Int(model.humidity))%"
+        windSpeedLabel.text = "\(model.windSpeed) km/h"
+        feelLikeLabel.text = "\(Int(model.feelsLike)-273)°C"
+        cloudsLabel.text = "\(model.clouds)"
+        uviLabel.text = "\(model.uvi)"
     }
 }

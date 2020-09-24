@@ -93,19 +93,7 @@ extension HomeViewController : CLLocationManagerDelegate {
 
 extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            numberOfRow = 1
-            return numberOfRow
-        } else if section == 1 {
-            numberOfRow = dailyModels.count
-            return numberOfRow
-        } else if section == 2 {
-            numberOfRow = 1
-            return numberOfRow
-        } else {
-            numberOfRow = 1
-            return numberOfRow
-        }
+        return section == 1 ? dailyModels.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,24 +145,18 @@ extension HomeViewController : UITableViewDelegate {
         switch indexPath.section {
         case 0:
             heighOfRow = 100
+            return heighOfRow
         case 1:
             heighOfRow = 50
+            return heighOfRow
         case 2:
             heighOfRow = 100
+            return heighOfRow
         case 3:
             heighOfRow = 423
+            return heighOfRow
         default:
             return 0
-        }
-        if indexPath.section == 0 {
-            return heighOfRow
-        } else if indexPath.section == 1 {
-            
-            return heighOfRow
-        } else if indexPath.section == 2 {
-            return heighOfRow
-        } else {
-            return heighOfRow
         }
     }
 }

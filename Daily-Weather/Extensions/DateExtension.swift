@@ -9,33 +9,19 @@
 import Foundation
 
 extension Date {
-    static var date = Date()
-    func getDayForDate(date: Date?) -> String {
-        guard let inputDate = date else {
-            return ""
-        }
-        
+    func getDayForDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH"
-        return formatter.string(from: inputDate) + ":00"
+        return formatter.string(from: self) + ":00"
     }
-    func getDay(date: Date?) -> String {
-        guard let inputDate = date else {
-            return ""
-        }
-        
+    func getDay() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
-        return formatter.string(from: inputDate)
+        return formatter.string(from: self)
     }
-    func getExTime(date: Date?) -> String {
-        guard let inputDate = date else {
-            return ""
-        }
-        
+    func getExTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        return formatter.string(from: inputDate)
+        return formatter.string(from: self)
     }
-    
 }

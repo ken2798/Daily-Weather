@@ -29,7 +29,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     func configure(with model: Hourly) {
         tempLabel.text = "\(Int(model.temperature)-273)°"
         iconImageView.contentMode = .scaleToFill
-        timeLabel.text = Date.init().getDayForDate(date: Date(timeIntervalSince1970: Double(model.dt)))
+        timeLabel.text = Date(timeIntervalSince1970: Double(model.dt)).getDayForDate()
         let url = URL (string: ImageUrl.imageUrl.Url(icon: model.weather.first?.icon ?? ""))
         do{
             let d = try Data(contentsOf: url!)

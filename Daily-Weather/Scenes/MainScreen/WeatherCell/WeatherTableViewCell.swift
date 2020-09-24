@@ -28,12 +28,12 @@ class WeatherTableViewCell: UITableViewCell {
     }
 
     func configure(with model: Daily) {
-        self.highTempLabel.textAlignment = .center
-        self.lowTempLabel.textAlignment = .center
-        self.iconImageView.contentMode = .scaleAspectFill
-        self.lowTempLabel.text = "\(Int(model.temperature.min)-273)°"
-        self.highTempLabel.text = "\(Int(model.temperature.max)-273)°"
-        self.dayLabel.text = Date.date.getDay(date: Date(timeIntervalSince1970: Double(model.dt)))
+        highTempLabel.textAlignment = .center
+        lowTempLabel.textAlignment = .center
+        iconImageView.contentMode = .scaleAspectFill
+        lowTempLabel.text = "\(Int(model.temperature.min)-273)°"
+        highTempLabel.text = "\(Int(model.temperature.max)-273)°"
+        dayLabel.text = Date(timeIntervalSince1970: Double(model.dt)).getDay()
         let url = URL (string: ImageUrl.imageUrl.Url(icon: model.weather.first?.icon ?? ""))
         iconImageView.kf.setImage(with: url)
     }
