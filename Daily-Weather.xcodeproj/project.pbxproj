@@ -317,8 +317,8 @@
 		CBF83F49251C5E1F00BFD631 /* ListLocationCell */ = {
 			isa = PBXGroup;
 			children = (
-				CBF83F4A251C5E1F00BFD631 /* LocationTableViewCell.xib */,
 				CBF83F4B251C5E1F00BFD631 /* LocationTableViewCell.swift */,
+				CBF83F4A251C5E1F00BFD631 /* LocationTableViewCell.xib */,
 			);
 			path = ListLocationCell;
 			sourceTree = "<group>";

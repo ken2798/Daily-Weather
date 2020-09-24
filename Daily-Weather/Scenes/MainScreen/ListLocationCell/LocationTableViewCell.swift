@@ -36,7 +36,7 @@ class LocationTableViewCell: UITableViewCell {
                 self.curr = result.current
                 DispatchQueue.main.async {
                     guard let cur = self.curr else {return}
-                    self.timeLabel.text = self.getDayForDate(Date(timeIntervalSince1970: Double(cur.dt)))
+                    self.timeLabel.text = Date(timeIntervalSince1970: Double(cur.dt)).getExTime()
                     if checkTem == true {
                         self.TemperatureLabel.text = "\((Int(cur.temperature)-273))°C"
                     }
@@ -50,18 +50,4 @@ class LocationTableViewCell: UITableViewCell {
         })
         
     }
-
-    func getDayForDate(_ date: Date?) -> String {
-        guard let inputDate = date else {
-            return ""
-        }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm" 
-        return formatter.string(from: inputDate)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }

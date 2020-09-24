@@ -28,6 +28,9 @@ class ListLocationViewController : UIViewController {
     
     var listCity = [City]()
     var passData: ((CLLocationDegrees,CLLocationDegrees) -> Void)?
+    var numberOfSection = 2
+    var heighOfRow : CGFloat = 70
+    
     
     override func viewDidLoad() {
         getListLocation()
@@ -55,18 +58,15 @@ class ListLocationViewController : UIViewController {
 
 extension ListLocationViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return listCity.count
-        }
-        return 1
+        return section == 0 ? listCity.count : 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return numberOfSection
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return heighOfRow
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -78,13 +78,17 @@ extension ListLocationViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = listLocationTable.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as! LocationTableViewCell
+            guard let cell = listLocationTable.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else {
+                return UITableViewCell()
+            }
             cell.configure(with: listCity[indexPath.row] )
             return cell
         }
-            let cell = listLocationTable.dequeueReusableCell(withIdentifier: AddLocationTableViewCell.identifier, for: indexPath) as! AddLocationTableViewCell
-            cell.deelegate = self
-            return cell
+        guard let cell = listLocationTable.dequeueReusableCell(withIdentifier: AddLocationTableViewCell.identifier, for: indexPath) as? AddLocationTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.deelegate = self
+        return cell
     }
 }
 
