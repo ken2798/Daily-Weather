@@ -10,9 +10,9 @@ import UIKit
 
 class LocationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var TemperatureLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var TemperatureLabel: UILabel!
     
     var curr : Current?
     
@@ -30,22 +30,22 @@ class LocationTableViewCell: UITableViewCell {
     
     func configure(with city: City) {
         self.locationLabel.text = city.name
-        WeatherData.weather.fetchCoursesJSON(with: city.lon, lat: city.lat, completion: {(res) in
+        WeatherData.weather.fetchCoursesJSON(with: city.lon, lat: city.lat, completion: { [weak self ] (res) in
             switch res {
             case .success(let result) :
-                self.curr = result.current
+                self?.curr = result.current
                 DispatchQueue.main.async {
-                    guard let cur = self.curr else {return}
-                    self.timeLabel.text = Date(timeIntervalSince1970: Double(cur.dt)).getExTime()
+                    guard let cur = self?.curr else {return}
+                    self?.timeLabel.text = Date(timeIntervalSince1970: Double(cur.dt)).getExTime()
                     if checkTem == true {
-                        self.TemperatureLabel.text = "\((Int(cur.temperature)-273))°C"
+                        self?.TemperatureLabel.text = "\((Int(cur.temperature)-273))°C"
                     }
                     else {
-                        self.TemperatureLabel.text = "\((Int(cur.temperature)*9/5-458))°F"
+                        self?.TemperatureLabel.text = "\((Int(cur.temperature)*9/5-458))°F"
                     }
                 }
-            case .failure(_) :
-                print("loi")
+            case .failure(let error) :
+                print(error)
             }
         })
         

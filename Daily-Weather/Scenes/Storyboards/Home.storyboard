@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="70" id="Xxa-VB-D5h"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="viewListBtn:" destination="0OV-LI-n5P" eventType="touchUpInside" id="q3s-gP-Aen"/>
+                                    <action selector="viewListCityButtonAction:" destination="0OV-LI-n5P" eventType="touchUpInside" id="Upj-lt-feo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -90,10 +90,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Hnd-u2-Kg5"/>
                     <connections>
-                        <outlet property="currentLocationLb" destination="olE-4P-djX" id="MLJ-ee-0LS"/>
-                        <outlet property="currentStatusLb" destination="nVh-9L-STk" id="1zX-99-jPk"/>
-                        <outlet property="currentTempLb" destination="DBQ-2i-Qsx" id="IIW-jG-2RN"/>
-                        <outlet property="menuBtn" destination="gb3-t3-4PY" id="TTp-wa-Mmg"/>
+                        <outlet property="currentLocationLabel" destination="olE-4P-djX" id="hua-qs-Gez"/>
+                        <outlet property="currentStatusLabel" destination="nVh-9L-STk" id="zOD-ng-R2o"/>
+                        <outlet property="currentTempLabel" destination="DBQ-2i-Qsx" id="iFs-Bu-R28"/>
+                        <outlet property="menuButton" destination="gb3-t3-4PY" id="y3v-sn-EFN"/>
                         <outlet property="tableView" destination="OOS-RF-QXZ" id="8mz-JY-Xqt"/>
                     </connections>
                 </viewController>

@@ -13,10 +13,10 @@ import RealmSwift
 var checkTem: Bool = true
 
 class BaseTableView : UITableView {
-    var chageContentSize : ((_ size : CGSize)-> Void)?
+    var changeContentSize : ((_ size : CGSize)-> Void)?
     override var contentSize: CGSize {
         didSet {
-            chageContentSize?(contentSize)
+            changeContentSize?(contentSize)
         }
     }
 }
@@ -42,8 +42,8 @@ class ListLocationViewController : UIViewController {
         listLocationTable.dataSource = self
         listLocationTable.delegate = self
         listLocationTable.backgroundColor = .black
-        listLocationTable.chageContentSize = { (size) in
-            self.heighTableView.constant = size.height
+        listLocationTable.changeContentSize = { [weak self] (size) in
+            self?.heighTableView.constant = size.height
         }
         listLocationTable.isScrollEnabled = false
         listLocationTable.register(LocationTableViewCell.nib(), forCellReuseIdentifier: LocationTableViewCell.identifier)

@@ -9,7 +9,7 @@
 import UIKit
 
 class TodayDetailTableViewCell: UITableViewCell {
-    @IBOutlet private weak var detailLb: UILabel!
+    @IBOutlet private weak var detailLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
@@ -24,7 +24,7 @@ class TodayDetailTableViewCell: UITableViewCell {
     }
 
     func configure(with model: Current) {
-        self.detailLb.text = "Today: It's \(model.weather[0].description) right now. Present temperature is \(Int(model.temperature)-273)°C. The perceptible temperature is approx \(Int(model.feelsLike)-273)°C."
+        self.detailLabel.text = "Today: It's \(model.weather[0].description) right now. Present temperature is \(Int(model.temperature)-273)°C. The perceptible temperature is approx \(Int(model.feelsLike)-273)°C."
     }
     
 }

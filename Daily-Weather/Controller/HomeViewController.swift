@@ -11,11 +11,11 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet private weak var menuBtn: UIButton!
+    @IBOutlet private weak var menuButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var currentTempLb: UILabel!
-    @IBOutlet private weak var currentLocationLb: UILabel!
-    @IBOutlet private weak var currentStatusLb: UILabel!
+    @IBOutlet private weak var currentTempLabel: UILabel!
+    @IBOutlet private weak var currentLocationLabel: UILabel!
+    @IBOutlet private weak var currentStatusLabel: UILabel!
     
     var latHome: CLLocationDegrees?
     var lonHome: CLLocationDegrees?
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     let heighOfSection: CGFloat = 1
     
     override func viewDidLoad() {
-        menuBtn.setImage(UIImage(named: "menu.png"), for: .normal)
+        menuButton.setImage(UIImage(named: "menu.png"), for: .normal)
         view.backgroundColor = UIColor(red: 52/255.0, green: 109/255.0, blue: 179/255.0, alpha: 1.0)
         setupTableView()
         setupLocation()
@@ -39,12 +39,12 @@ class HomeViewController: UIViewController {
         setupCurrentView(lat: lat, lon: lon)
     }
     
-    @IBAction func viewListBtn(_ sender: UIButton) {
+    @IBAction func viewListCityButtonAction(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: "Home", bundle: nil ).instantiateViewController(withIdentifier: "ListLocationView") as? ListLocationViewController
             else {return}
-        vc.passData = { (latCity,lonCity) in
-            self.setupCurrentView(lat: latCity, lon: lonCity)
-            self.getWeatherData(lat: latCity, lon: lonCity)
+        vc.passData = { [weak self] (latCity,lonCity) in
+            self?.setupCurrentView(lat: latCity, lon: lonCity)
+            self?.getWeatherData(lat: latCity, lon: lonCity)
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -79,8 +79,8 @@ class HomeViewController: UIViewController {
                 self?.dailyModels = result.daily
                 guard let cr = self?.currentModels else { return }
                 DispatchQueue.main.async {
-                    self?.currentTempLb.text = " \(Int(cr.temperature)-273)°"
-                    self?.currentStatusLb.text = cr.weather[0].description
+                    self?.currentTempLabel.text = " \(Int(cr.temperature)-273)°"
+                    self?.currentStatusLabel.text = cr.weather[0].description
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
@@ -93,7 +93,7 @@ class HomeViewController: UIViewController {
     func setupCurrentView(lat : CLLocationDegrees, lon: CLLocationDegrees){
         LocationData.location.getAddressFromLatLon(lat: lat, lon: lon){[weak self] (addressString, err) in
             if let addressString = addressString {
-                self?.currentLocationLb.text = addressString
+                self?.currentLocationLabel.text = addressString
             }
         }
     }

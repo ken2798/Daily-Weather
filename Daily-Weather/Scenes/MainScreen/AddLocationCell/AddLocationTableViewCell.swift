@@ -16,12 +16,12 @@ protocol AddLocationTableViewCellProtocol {
 class AddLocationTableViewCell: UITableViewCell {
     
     var deelegate : AddLocationTableViewCellProtocol?
-    @IBOutlet weak var changeTemBtn: UIButton!
-    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var changeTempButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .black
-        addBtn.setImage(UIImage(named: "plus.png"), for: .normal)
+        backgroundColor = .black
+        addButton.setImage(UIImage(named: "plus.png"), for: .normal)
         
     }
     
@@ -31,11 +31,11 @@ class AddLocationTableViewCell: UITableViewCell {
                      bundle: nil)
     }
     
-    @IBAction func addActBtn(_ sender: UIButton) {
+    @IBAction func addButtonAction(_ sender: UIButton) {
         deelegate?.MoveTo()
     }
     
-    @IBAction func changeActBtn(_ sender: UIButton) {
+    @IBAction func changeButtonAction(_ sender: UIButton) {
         deelegate?.ChangeTemp()
     }
     

@@ -32,7 +32,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="detailLb" destination="OKN-wX-8ht" id="hfl-cc-gjQ"/>
+                <outlet property="detailLabel" destination="OKN-wX-8ht" id="7rZ-EM-a7N"/>
             </connections>
             <point key="canvasLocation" x="132" y="113"/>
         </tableViewCell>
