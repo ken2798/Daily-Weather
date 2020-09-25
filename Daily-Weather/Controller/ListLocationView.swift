@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import RealmSwift
-var checkTem: Bool = true
+var checkTemp: Bool = false
 
 class BaseTableView : UITableView {
     var changeContentSize : ((_ size : CGSize)-> Void)?
@@ -81,13 +81,13 @@ extension ListLocationViewController : UITableViewDataSource {
             guard let cell = listLocationTable.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else {
                 return UITableViewCell()
             }
-            cell.configure(with: listCity[indexPath.row] )
+            cell.configure(with: listCity[indexPath.row])
             return cell
         }
         guard let cell = listLocationTable.dequeueReusableCell(withIdentifier: AddLocationTableViewCell.identifier, for: indexPath) as? AddLocationTableViewCell else {
             return UITableViewCell()
         }
-        cell.deelegate = self
+        cell.delegate = self
         return cell
     }
 }
@@ -123,16 +123,11 @@ extension ListLocationViewController : UITableViewDelegate {
 }
 
 extension ListLocationViewController: AddLocationTableViewCellProtocol {
-    func MoveTo() {
+    func navigateToAnotherScreen() {
     }
     
-    func ChangeTemp() {
-        if checkTem == true {
-            checkTem = false
-            listLocationTable.reloadData()
-        } else {
-            checkTem = true
-            listLocationTable.reloadData()
-        }
+    func ChangeTempType() {
+        checkTemp = !checkTemp
+        listLocationTable.reloadData()
     }
 }

@@ -9,15 +9,17 @@
 import UIKit
 
 protocol AddLocationTableViewCellProtocol {
-    func MoveTo()
-    func ChangeTemp()
+    func navigateToAnotherScreen()
+    func ChangeTempType()
 }
 
 class AddLocationTableViewCell: UITableViewCell {
     
-    var deelegate : AddLocationTableViewCellProtocol?
-    @IBOutlet weak var changeTempButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
+    
+    @IBOutlet private weak var changeTempButton: UIButton!
+    @IBOutlet private weak var addButton: UIButton!
+    var delegate : AddLocationTableViewCellProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .black
@@ -32,11 +34,11 @@ class AddLocationTableViewCell: UITableViewCell {
     }
     
     @IBAction func addButtonAction(_ sender: UIButton) {
-        deelegate?.MoveTo()
+        delegate?.navigateToAnotherScreen()
     }
     
     @IBAction func changeButtonAction(_ sender: UIButton) {
-        deelegate?.ChangeTemp()
+        delegate?.ChangeTempType()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
